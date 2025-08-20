@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",sans-serif;}
+  body{
+    background: linear-gradient(135deg,#8e44ad,#a569bd);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    color:#fff;
+    text-align:center;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* Angka 19 sebagai background */
+  .number{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(8rem, 30vw, 25rem);
+    font-weight: bold;
+    background: linear-gradient(135deg, #8e44ad, #ff9aff, #c47dff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.12; /* transparan */
+    z-index: 0; /* di belakang konten */
+    pointer-events: none;
+  }
+
+  .intro{
+    opacity:0;
+    transform:translateY(-50px);
+    animation:introAnim 1.5s forwards;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  @keyframes introAnim{ to{opacity:1; transform:translateY(0);} }
+
+  h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:10px;text-shadow:2px 2px 8px rgba(0,0,0,0.3);}
+  p{font-size:clamp(1rem,3vw,1.3rem);margin-bottom:20px;color:#f3e5f5;}
+
+  .photo img{
+    width:clamp(150px,30vw,200px);
+    height:clamp(150px,30vw,200px);
+    border-radius:50%;
+    border:5px solid #fff;
+    box-shadow:0 0 15px #f3e5f5,0 0 30px #8e44ad;
+    object-fit:cover;
+    transition:transform 0.3s;
+  }
+  .photo img:hover{transform:scale(1.1);cursor:pointer;}
+
+  .card{
+    background: rgba(255,255,255,0.15);
+    border-radius:20px;
+    padding:30px 20px;
+    width:clamp(300px,80%,500px);
+    box-shadow:0 0 15px rgba(0,0,0,0.3);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:320px;
+    backdrop-filter: blur(15px);
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn{
+    margin-top:20px;padding:12px 25px;background:#f3e5f5;color:#8e44ad;border:none;border-radius:25px;font-weight:bold;cursor:pointer;transition:0.3s;
+  }
+  .btn:hover{background:#fff;color:#5e3370;transform:scale(1.1);}
+
+  #message{
+    margin-top:20px;
+    font-size:clamp(1rem,3vw,1.3rem);
+    font-weight:bold;
+    display:none;
+    color:#ffffff;
+    text-shadow:1px 1px 4px rgba(0,0,0,0.3);
+    animation:popMessage 0.5s ease forwards;
+    text-align:center;
+  }
+  @keyframes popMessage{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+
+  /* Fireworks canvas */
+  #fireworksCanvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:-1;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="fireworksCanvas"></canvas>
+
+<div class="number">19</div>
+
+<div class="intro">
+  <h1>Hi Sweet Girl</h1>
+  <p>For my fav ex💜</p>
+
+  <div class="photo">
+    <img src="../image/Kartika Ayu.jpg" alt="Foto Ulang Tahun"> <!-- ganti fotonya di sini -->
+  </div>
+
+  <div class="card">
+    <h2>Hii, today is your birthday right?</h2>
+    <p>I got something for you</p>
+    <button class="btn" onclick="toggleMessage()">🎁 Pencet disini yaa</button>
+    <div id="message">
+      ✨ “Happy Birthday, Tyas. 💜 🎉 
+<p>
+  Hows your day? semoga baik baik aja yaaa. Waktu berjalannya cepet banget ya
+ga kerasa kayanya baru kemarin kita SMP, diem-diem keluar bareng biar gak ketauan orang tua. Sekarang tiba-tiba kamu udah 19 aja.
+
+Aku masih inget kok hal-hal kecil tentang kamu dari suka bikin kue atau makanan makanan yang unik,  kamu juga suka kasih gift lucu-lucu, sampai dulu paskita awal-awal SMA kamu buatin bekal. Jujur, hal-hal kecil kek gitu justru yang paling susah dilupain, karena keliatan banget kalo kamu itu selalu bisa bikin orang lain ngerasa dihargai. Kamu itu kaya bunga, pasti kamu tanya kenapa bunga? iyaa 🌻bunga🌻 itu selalu mekar seperti bunga di musim terbaiknya—ceria, menebar keindahan, dan bikin semua yang melihatmu tersenyum, meskipun aku tau banyak hal yang kamu simpen sendiri. Itu salah satu hal yang bikin aku kagum sama kamu. Tapi kamu juga harus tau, walau terlihat kuat dan indah, bunga juga butuh perhatian, air, dan sinar agar tetap tumbuh. Semoga di tahun baru usiamu, kamu tetap bersemi, dirawat dengan cinta, dan tumbuh lebih kuat dari hari ke hari.
+
+Aku tau, tahun ini gak semuanya gampang. Kamu sempet jatuh, sempet ketolak di PTN yang kamu impikan itu. Tapi aku pengen kamu inget: gagal itu bukan akhir, itu cuma belokan kecil biar kamu sampai ke jalan yang lebih cocok. Dan buktinya sekarang kamu keterima di UNNES 🥳🎉 selamat sekali lagi buat kamu, kamu udah buktiin kalo kamu bisa bangkit lagi.
+
+Di umur 19 ini, semoga kamu tetep tumbuh kuat, tetep senyum kayak masa masa awal kita deket waktu SMP, jangan lupa bersyukur, dan jangan terlalu keras sama diri sendiri. Jangan lupa juga sediain ruang buat dirimu sendiri, biar gak cuma mikirin orang lain. Dan jangan pernah lupa buat doa di setiap langkahmu.
+
+Aku juga mau bilang: tetep semangat ya jadi anak pertama yang selalu jadi andalan buat adik-adikmu. Aku tau kadang capek, kadang ngerasa berat, tapi percayadeh, kamu udah lebih kuat dari yang kamu kira.
+
+Dan jangan lupa juga, tetep jaga diri di zaman sekarang yang sering bikin hal buruk keliatan normal. Teruslah hidup demi semua mimpi-mimpimu mulai dari toko kue sampai traveling keberbagai negara itu, aku percaya suatu saat nanti kamu bisa banget ngewujudin itu.
+
+oh ya i just wanna say, even if i'm not in your life anymore, i still want to see you achieve your goals. I'll always be proud and support you and silently cheering for you. I hope you're doing good. And thank you for loving me in that moment. I'm gratefull to meet you, i'm happy i could write story with you, thank you for being present in my life. Terlepas dari bagaimana cara kita berpisah waktu itu aku hanya ingin berterimakasih karena kamu pernah menjadi satu-satunya orang yang bertahan selama itu dengan segala baik buruknya aku. I hope the universe give you all the good and genuine things you deserve.
+    </div>
+  </div>
+</div>
+
+<!-- Lagu -->
+<audio id="birthdaySong" src="../audio/Semua Aku Dirayakan.mpeg"></audio>
+
+<script>
+let isMessageVisible = false;
+
+function toggleMessage(){
+  const msg = document.getElementById("message");
+  let song=document.getElementById("birthdaySong");
+
+  if(!isMessageVisible){
+    msg.style.display = "block";
+    song.play();
+    startFireworks();
+  } else {
+    msg.style.display = "none";
+  }
+  isMessageVisible = !isMessageVisible;
+}
+
+// Fireworks effect
+function startFireworks(){
+  const canvas=document.getElementById('fireworksCanvas');
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+
+  let particles=[];
+
+  function random(min,max){return Math.random()*(max-min)+min;}
+
+  function createFirework(x,y){
+    let count=100;
+    for(let i=0;i<count;i++){
+      particles.push({
+        x:x,y:y,
+        angle:random(0,Math.PI*2),
+        speed:random(2,7),
+        radius:2,
+        life:100,
+        color:`hsl(${random(0,360)},100%,60%)`
+      });
+    }
+  }
+
+  function animate(){
+    ctx.fillStyle="rgba(0,0,0,0.1)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach((p,i)=>{
+      p.x+=Math.cos(p.angle)*p.speed;
+      p.y+=Math.sin(p.angle)*p.speed+0.5; 
+      p.life--;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+      ctx.fillStyle=p.color;
+      ctx.fill();
+      if(p.life<=0){particles.splice(i,1);}
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  setInterval(()=>{
+    createFirework(random(100,canvas.width-100),random(100,canvas.height/2));
+  },1500);
+
+  animate();
+}
+</script>
+</body>
+</html>
